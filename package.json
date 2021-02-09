@@ -55,5 +55,15 @@
     "*.json": [
       "prettier --write"
     ]
+  },
+  "scripts": {
+    "start": "yarn build && node dist/src/index.js",
+    "dev": "ts-node-dev 'src/index.ts'",
+    "build": "tsc",
+    "test": "yarn test:unit && yarn test:functional",
+    "test:unit": "jest --projects ./test/unit",
+    "test:functional": "jest --projects ./test/functional --forceExit --runInBand",
+    "lint": "eslint ./src ./test --ext .ts",
+    "lint:fix": "yarn eslint ./src ./test --ext .ts --fix"
   }
 }
