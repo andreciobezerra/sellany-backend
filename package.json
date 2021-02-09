@@ -22,7 +22,7 @@
     "semi": true
   },
   "husky":{
-    "pre-commit": "lint-staged",
+    "pre-commit": "echo gs",
     "post-commit": "echo xablau"
   },
   "lint-staged":{
