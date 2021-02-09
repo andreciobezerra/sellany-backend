@@ -17,14 +17,14 @@
     "baseUrl": ".",
     "paths": {
       "@src/*": ["./src/*"],
-      "@test/*": ["./test/*"]
+      "@tests/*": ["./tests/*"]
     },
-    "rootDirs": ["./src", "./test"],
+    "rootDirs": ["./src", "./tests"],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["./src/**/*.ts", "./test/**/*.ts"],
+  "include": ["./src/**/*.ts", "./tests/**/*.ts"],
   "exclude": ["./node_modules/*", "dist"]
 }

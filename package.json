@@ -61,9 +61,9 @@
     "dev": "ts-node-dev 'src/index.ts'",
     "build": "tsc",
     "test": "yarn test:unit && yarn test:functional",
-    "test:unit": "jest --projects ./test/unit",
-    "test:functional": "jest --projects ./test/functional --forceExit --runInBand",
-    "lint": "eslint ./src ./test --ext .ts",
-    "lint:fix": "yarn eslint ./src ./test --ext .ts --fix"
+    "test:unit": "jest --projects ./tests/unit",
+    "test:functional": "jest --projects ./tests/functional --forceExit --runInBand",
+    "lint": "eslint ./src ./tests --ext .ts",
+    "lint:fix": "yarn eslint ./src ./tests --ext .ts --fix"
   }
 }
