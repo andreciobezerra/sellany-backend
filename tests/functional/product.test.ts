@@ -7,7 +7,7 @@ describe("Product CRUD operations tests", () => {
   });
 
   test("Get a product", async (): Promise<void> => {
-    const { body, status } = await global.testRequest.get("/product/");
+    const { body, status } = await global.testRequest.get("/product/1");
 
     expect(status).toEqual(200);
     expect(body).toEqual({ message: "Test." });
