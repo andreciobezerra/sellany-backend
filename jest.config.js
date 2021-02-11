@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const { resolve } = require("path");
-
 module.exports = {
   testMatch: ["<rootDir>/tests/**/*.test.ts"],
   testEnvironment: "node",
