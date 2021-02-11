@@ -1,8 +1,9 @@
-import "./util/module-alias";
+import "./utils/module-alias";
 import { Server } from "@overnightjs/core";
 import { Application, json } from "express";
+import ProductController from "./controllers/product";
 
-export class SetupServer extends Server {
+class SetupServer extends Server {
   private port: number;
 
   constructor(port = 3000) {
@@ -15,7 +16,9 @@ export class SetupServer extends Server {
   }
 
   private setupController(): void {
-    console.log("aqui vão os controllers");
+    const productController = new ProductController();
+
+    this.addControllers([productController]);
   }
 
   public init(): void {
@@ -27,3 +30,5 @@ export class SetupServer extends Server {
     return this.app;
   }
 }
+
+export default SetupServer;
