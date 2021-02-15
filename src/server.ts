@@ -1,32 +1,32 @@
 import "./utils/module-alias";
-import { Server } from "@overnightjs/core";
-import { Application, json } from "express";
-import ProductController from "./controllers/product";
+import express from "express";
+import cors from "cors";
+import router from "@src/routes/router";
 
-class SetupServer extends Server {
+class SetupServer {
   private port: number;
+  private app: express.Application;
 
   constructor(port = 3000) {
-    super();
     this.port = port;
+    this.app = express();
   }
 
   private setupExpress(): void {
-    this.app.use(json());
+    this.app.use(express.json());
+    this.app.use(cors());
   }
 
-  private setupController(): void {
-    const productController = new ProductController();
-
-    this.addControllers([productController]);
+  private setupRouter(): void {
+    this.app.use(router);
   }
 
   public init(): void {
     this.setupExpress();
-    this.setupController();
+    this.setupRouter();
   }
 
-  public getApp(): Application {
+  public getApp(): express.Application {
     return this.app;
   }
 }

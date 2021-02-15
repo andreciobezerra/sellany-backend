@@ -20,8 +20,6 @@
       "@tests/*": ["./tests/*"]
     },
     "rootDirs": ["./src", "./tests"],
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
