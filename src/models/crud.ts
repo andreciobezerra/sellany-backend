@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import IService from "@src/interfaces-types/service-interface";
 import ICrudMessages from "@src/interfaces-types/crud-messages-interface";
 import IDBDrive from "@src/interfaces-types/db-drive-interface";
+import { Entity } from "@src/interfaces-types/types";
 
 abstract class Crud implements IService {
   private static Messages: ICrudMessages;
@@ -13,23 +14,53 @@ abstract class Crud implements IService {
   }
 
   create(req: Request, res: Response): void {
-    res.status(200).json({ message: Crud.Messages.createMessage });
+    const elem = req.body as Entity;
+    try {
+      Crud.DBDrive.create(elem);
+      res.status(200).json({ message: Crud.Messages.createMessage });
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   read(req: Request, res: Response): void {
-    res.status(200).json({ message: "Test." });
+    const { id } = req.params;
+    try {
+      const data = Crud.DBDrive.read(id);
+
+      res.status(200).json({ data });
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   readAll(req: Request, res: Response): void {
-    throw new Error("Method not implemented.");
+    try {
+      const data = Crud.DBDrive.readAll();
+      res.status(200).json({ data });
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   update(req: Request, res: Response): void {
-    throw new Error("Method not implemented.");
+    const { id } = req.params;
+    try {
+      Crud.DBDrive.update(id, req.body);
+      res.status(200).json({ message: Crud.Messages.updateMessage });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   delete(req: Request, res: Response): void {
-    throw new Error("Method not implemented.");
+    const { id } = req.params;
+    try {
+      Crud.DBDrive.delete(id);
+      res.status(200).json({ message: Crud.Messages.deleteMessage });
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
 
