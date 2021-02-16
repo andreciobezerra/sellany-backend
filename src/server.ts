@@ -3,7 +3,7 @@ import express from "express";
 import cors from "cors";
 import router from "@src/routes/router";
 
-class SetupServer {
+class Server {
   private port: number;
   private app: express.Application;
 
@@ -29,6 +29,10 @@ class SetupServer {
   public getApp(): express.Application {
     return this.app;
   }
+
+  public listen(): void {
+    this.app.listen(this.port, () => console.info(`The server listening at port ${this.port}`));
+  }
 }
 
-export default SetupServer;
+export default Server;
