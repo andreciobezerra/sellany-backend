@@ -2,6 +2,7 @@ import "./utils/module-alias";
 import express from "express";
 import cors from "cors";
 import router from "@src/routes/router";
+import sqliteDrive from "./database/sqlite3DB";
 
 class Server {
   private port: number;
@@ -24,6 +25,7 @@ class Server {
   public init(): void {
     this.setupExpress();
     this.setupRouter();
+    new sqliteDrive();
   }
 
   public getApp(): express.Application {
