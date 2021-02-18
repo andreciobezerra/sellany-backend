@@ -1,8 +1,16 @@
-import * as sqlite3 from "@src/models/db-drives/product-sqlite-drive";
+import ProductSQLite from "@src/models/db-drives/product-sqlite";
+import Product from "@src/models/entities/product";
 
 describe("Test the operation of DB driver ProductDrive", () => {
-  test("Has a strategy?", () => {
-    const teste1 = sqlite3.default.getProductList((res: any) => console.log(res));
-    console.log(teste1);
+  const sqliteDrive = new ProductSQLite();
+  const product = new Product(
+    "mortadela fluminense",
+    36.5,
+    "xyz123",
+    "Apimentada, gordurosa e saborosa."
+  );
+
+  test("Create a product", () => {
+    sqliteDrive.create(product);
   });
 });
