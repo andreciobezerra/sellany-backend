@@ -8,12 +8,12 @@ class ProductSQLite implements IDBStrategy {
   private db = this.dbDrive.getDB();
 
   create(product: Product): void {
-    this.db.run("INSERT INTO product VALUES ($nome)", {
-      $nome: product.name,
-      $price: product.price,
-      $companyID: product.companyID,
-      $details: product.details,
-    });
+    this.db.run("INSERT INTO product ( nome, preco, companyID, descricao )  VALUES ( ?,?,?,?)", [
+      product.name,
+      product.price,
+      product.companyID,
+      product.details,
+    ]);
   }
   read(id: string): Product {
     throw new Error("Method not implemented.");
