@@ -5,7 +5,7 @@ class sqliteDrive {
   private static DB: sqlite3.Database;
 
   constructor() {
-    sqliteDrive.DB = new this.sqlite.Database("./sellany.sqlite3");
+    sqliteDrive.DB = new this.sqlite.Database("./database/sellany.sqlite3");
   }
 
   getDB(): sqlite3.Database {

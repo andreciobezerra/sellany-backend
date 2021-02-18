@@ -2,7 +2,7 @@ import "./utils/module-alias";
 import express from "express";
 import cors from "cors";
 import router from "@src/routes/router";
-import sqliteDrive from "./database/sqlite3DB";
+import sqliteDrive from "../database/sqlite3DB";
 
 class Server {
   private port: number;
