@@ -13,4 +13,7 @@ describe("Test the operation of DB driver ProductDrive", () => {
   test("Create a product", () => {
     sqliteDrive.create(product);
   });
+  test("List a product", () => {
+    console.log(sqliteDrive.readAll());
+  });
 });

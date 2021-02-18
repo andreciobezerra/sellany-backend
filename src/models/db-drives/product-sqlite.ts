@@ -22,9 +22,12 @@ class ProductSQLite implements IDBStrategy {
   readAll(): Array<Product> {
     const products: string | any[] = [];
 
-    this.db.all("SELECT * FROM product", (err: any, res: any) => {
-      products.concat(res);
-    });
+    this.db.all(
+      'SELECT id ,nome, preco, companyID, descricao FROM "product"',
+      (err: any, res: any) => {
+        products.concat(JSON.parse(res));
+      }
+    );
 
     return products;
   }
