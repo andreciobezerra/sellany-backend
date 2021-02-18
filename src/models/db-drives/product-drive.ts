@@ -1,6 +1,7 @@
 import type IDBDrive from "@src/interfaces-types/db-drive-interface";
 import type IDBStrategy from "@src/interfaces-types/db-strategy-interface";
-import type IProduct from "@src/interfaces-types/product-interface";
+import type { Data } from "@src/interfaces-types/types";
+import type Product from "@src/models/entities/product";
 import ProductInMemory from "./product-in-memory";
 
 class ProductDrive implements IDBDrive {
@@ -11,19 +12,19 @@ class ProductDrive implements IDBDrive {
     this.strategy = new (ProductDrive.Strategies.get(nodeEnv) ?? ProductInMemory)();
   }
 
-  create(elem: IProduct): void {
+  create(elem: Product): void {
     this.strategy.create(elem);
   }
 
-  read(id: string): IProduct {
+  read(id: string): Product {
     return this.strategy.read(id);
   }
 
-  readAll(): IProduct[] {
+  readAll(): Product[] {
     return this.strategy.readAll();
   }
 
-  update(id: string, newData: Record<string, string | number>): void {
+  update(id: string, newData: Data): void {
     this.strategy.update(id, newData);
   }
 

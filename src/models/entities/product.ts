@@ -1,10 +1,8 @@
-import IProduct from "@src/interfaces-types/product-interface";
-
-class Product implements IProduct {
-  readonly name: string;
-  readonly price: number;
-  readonly companyID: string;
-  readonly details: string;
+class Product {
+  private name: string;
+  private price: number;
+  private companyID: string;
+  private details: string;
 
   constructor(name: string, price: number, companyID: string, details: string) {
     this.name = name;

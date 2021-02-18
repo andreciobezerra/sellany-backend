@@ -1,21 +1,22 @@
 import IDBStrategy from "@src/interfaces-types/db-strategy-interface";
-import IProduct from "@src/interfaces-types/product-interface";
+import type { Data } from "@src/interfaces-types/types";
+import type Product from "../entities/product";
 
 class ProductInMemory implements IDBStrategy {
-  readonly data: Array<Record<string, string | number>> = [];
+  readonly data: Array<Data> = [];
 
-  create(elem: IProduct): void {
+  create(elem: Product): void {
     this.data.push({ id: `${this.data.length + 1}`, ...elem });
   }
 
-  read(id: string): IProduct {
+  read(id: string): Product {
     const product = this.data.find((prod) => prod.id === id);
 
-    return (product as unknown) as IProduct;
+    return (product as unknown) as Product;
   }
 
-  readAll(): Array<IProduct> {
-    return (this.data as unknown) as Array<IProduct>;
+  readAll(): Array<Product> {
+    return (this.data as unknown) as Array<Product>;
   }
 
   update(id: string, newData: Record<string, string | number>): void {
