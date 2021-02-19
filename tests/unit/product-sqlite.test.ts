@@ -10,10 +10,19 @@ describe("Test the operation of DB driver ProductDrive", () => {
     "Apimentada, gordurosa e saborosa."
   );
 
+  afterAll(() => sqliteDrive.close());
+
   test("Create a product", () => {
     sqliteDrive.create(product);
   });
-  test("List a product", () => {
-    console.log(sqliteDrive.readAll());
+
+  test("Read a product", () => {
+    const product = sqliteDrive.read("1");
+    console.log(product);
+  });
+
+  test("List all products", () => {
+    const products = sqliteDrive.readAll();
+    console.log(products);
   });
 });

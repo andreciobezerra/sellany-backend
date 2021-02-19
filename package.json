@@ -10,20 +10,20 @@
   ],
   "dependencies": {
     "axios": "^0.21.1",
+    "better-sqlite3": "^7.1.2",
     "config": "^3.3.3",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "module-alias": "^2.2.2",
-    "sqlite3": "^5.0.2"
+    "module-alias": "^2.2.2"
   },
   "devDependencies": {
+    "@types/better-sqlite3": "^5.4.1",
     "@types/config": "^0.0.38",
     "@types/cors": "^2.8.10",
     "@types/express": "^4.17.11",
     "@types/jest": "^26.0.20",
     "@types/module-alias": "^2.0.0",
     "@types/node": "^14.14.25",
-    "@types/sqlite3": "^3.1.7",
     "@types/supertest": "^2.0.10",
     "@typescript-eslint/eslint-plugin": "^4.15.0",
     "@typescript-eslint/parser": "^4.15.0",
@@ -64,7 +64,7 @@
     "dev": "ts-node-dev 'src/index.ts'",
     "build": "tsc",
     "test": "yarn test:unit && yarn test:functional",
-    "test:unit": "jest --projects ./tests/unit",
+    "test:unit": "jest --projects ./tests/unit ",
     "test:functional": "jest --projects ./tests/functional --forceExit --runInBand",
     "lint": "eslint ./src ./tests --ext .ts",
     "lint:fix": "yarn eslint ./src ./tests --ext .ts --fix"
