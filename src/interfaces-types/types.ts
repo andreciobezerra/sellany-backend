@@ -1,4 +1,4 @@
-import Product from "@src/models/entities/product";
+import type Product from "@src/models/entities/product";
 
 export type int = number & { __int__: void };
 

@@ -3,7 +3,7 @@ import Product from "@src/models/entities/product";
 
 describe("Test the operation of DB driver ProductDrive", () => {
   const sqliteDrive = new ProductSQLite();
-  const product = new Product(
+  const fluminense = new Product(
     "mortadela fluminense",
     36.5,
     "xyz123",
@@ -13,12 +13,16 @@ describe("Test the operation of DB driver ProductDrive", () => {
   afterAll(() => sqliteDrive.close());
 
   test("Create a product", () => {
-    sqliteDrive.create(product);
+    sqliteDrive.create(fluminense);
   });
 
   test("Read a product", () => {
     const product = sqliteDrive.read("1");
-    console.log(product);
+
+    expect(product?.name).toEqual(fluminense.name);
+    expect(product?.price).toEqual(fluminense.price);
+    expect(product?.companyID).toEqual(fluminense.companyID);
+    expect(product?.details).toEqual(fluminense.details);
   });
 
   test("List all products", () => {

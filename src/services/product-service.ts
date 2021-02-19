@@ -10,9 +10,9 @@ class ProductService extends Crud {
   };
 
   constructor() {
+    super(ProductService.CrudMessages, new ProductDriver(process.env.NODE_ENV ?? ""));
     const env = process.env.NODE_ENV ?? "";
     const productDriver = new ProductDriver(env);
-    super(ProductService.CrudMessages, productDriver);
   }
 }
 
