@@ -13,7 +13,7 @@ describe("Product CRUD operations tests", () => {
     expect(body).toEqual({ message: "Product created with success." });
   });
 
-  xtest("Get a product", async (): Promise<void> => {
+  test("Get a product", async (): Promise<void> => {
     const { body, status } = await global.testRequest.get("/product/1");
 
     expect(status).toEqual(200);
@@ -23,13 +23,13 @@ describe("Product CRUD operations tests", () => {
     expect(body.data.details).toEqual(product.details);
   });
 
-  xtest("Get all products", async (): Promise<void> => {
+  test("Get all products", async (): Promise<void> => {
     const { body, status } = await global.testRequest.get("/product/all-products");
     expect(status).toEqual(200);
     expect(body.data.includes(product)).toBeTruthy;
   });
 
-  xtest("Update a product", async (): Promise<void> => {
+  test("Update a product", async (): Promise<void> => {
     const { body, status } = await global.testRequest.patch("/product/1").send({ price: 3.49 });
     const productRes = await global.testRequest.get("/product/1");
 
@@ -43,7 +43,7 @@ describe("Product CRUD operations tests", () => {
     expect(productRes.body.data.price).toEqual(3.49);
   });
 
-  xtest("Delete a product", async (): Promise<void> => {
+  test("Delete a product", async (): Promise<void> => {
     const { body, status } = await global.testRequest.delete("/product/1");
 
     expect(status).toEqual(200);
