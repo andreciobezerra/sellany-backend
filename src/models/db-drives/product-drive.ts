@@ -17,11 +17,15 @@ class ProductDrive implements IDBDrive {
   }
 
   read(id: string): Product {
-    return this.strategy.read(id);
+    const product = this.strategy.read(id);
+
+    return product as Product;
   }
 
-  readAll(): Product[] {
-    return this.strategy.readAll();
+  readAll(): Array<Product> {
+    const products = this.strategy.readAll();
+
+    return products as Array<Product>;
   }
 
   update(id: string, newData: Data): void {

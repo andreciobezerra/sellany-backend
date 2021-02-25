@@ -1,6 +1,6 @@
 abstract class Person {
-  private name: string;
-  private cpf: string;
+  readonly name: string;
+  readonly cpf: string;
 
   constructor(name: string, cpf: string) {
     this.name = name;
