@@ -1,0 +1,3 @@
+- Refactoring the Product on Diagram
+- Fix the DB to english
+- Add Company and Order services
