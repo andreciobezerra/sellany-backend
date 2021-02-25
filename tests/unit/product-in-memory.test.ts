@@ -3,7 +3,7 @@ import Product from "@src/models/entities/product";
 
 describe("Test the CRUD operations of DB driver ProductInMemory", () => {
   const productDrive = new ProductInMemory();
-  const tubaina = new Product("tubaina", 5.0, "xyz123", "o sabor refrescante do verão");
+  const tubaina = new Product("tubaina", 5.0, "xyz123", "o sabor refrescante do verão", 0.5);
 
   test("Create an product", () => {
     productDrive.create(tubaina);

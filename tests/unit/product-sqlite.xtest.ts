@@ -7,7 +7,8 @@ describe("Test the operation of DB driver ProductDrive", () => {
     "mortadela fluminense",
     36.5,
     "xyz123",
-    "Apimentada, gordurosa e saborosa."
+    "Apimentada, gordurosa e saborosa.",
+    0.3
   );
 
   afterAll(() => sqliteDrive.close());
@@ -25,8 +26,7 @@ describe("Test the operation of DB driver ProductDrive", () => {
     expect(product?.details).toEqual(fluminense.details);
   });
 
-  test("List all products", () => {
+  xtest("List all products", () => {
     const products = sqliteDrive.readAll();
-    console.log(products);
   });
 });

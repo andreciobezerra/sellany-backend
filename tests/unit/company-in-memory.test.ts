@@ -2,7 +2,7 @@ import CompanyInMemory from "@src/models/db-drives/company-in-memory";
 import Company from "@src/models/entities/company";
 import Owner from "@src/models/entities/owner";
 
-describe("Teste the CRUD operations of DBDriver CompanyInMemory", () => {
+describe("Test the CRUD operations of DBDriver CompanyInMemory", () => {
   const canaCaiana = new Company("Cana caiana LTDA", "Cana caiana", "01123456000151", {
     name: "José Severino",
     cpf: "11122233344",

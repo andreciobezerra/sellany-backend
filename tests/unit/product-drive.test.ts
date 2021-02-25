@@ -3,7 +3,7 @@ import Product from "@src/models/entities/product";
 
 describe("Test the operation of DB driver ProductDrive", () => {
   const productDrive = new ProductDrive(process.env.NODE_ENV ?? "");
-  const tubaina = new Product("tubaina", 5.0, "xyz123", "o sabor refrescante do verão");
+  const tubaina = new Product("tubaina", 5.0, "xyz123", "o sabor refrescante do verão", 0.5);
 
   test("Has a strategy?", () => {
     expect(productDrive.strategy).toBeDefined;

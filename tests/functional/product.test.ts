@@ -4,6 +4,7 @@ describe("Product CRUD operations tests", () => {
     companyID: "pb5815000",
     price: 2.99,
     details: "o puro sabor da cana de açucar",
+    percentual: 0.6,
   };
 
   test("Create an product", async (): Promise<void> => {
