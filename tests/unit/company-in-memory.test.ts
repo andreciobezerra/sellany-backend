@@ -13,7 +13,7 @@ describe("Test the CRUD operations of DBDriver CompanyInMemory", () => {
   test("Create an company", () => {
     companyDrive.create(canaCaiana);
 
-    expect(companyDrive.data.includes({ ...canaCaiana })).toBeTruthy;
+    expect(companyDrive.data[0].fantasy).toEqual(canaCaiana.fantasy);
   });
 
   test("Read a company", () => {
@@ -22,14 +22,14 @@ describe("Test the CRUD operations of DBDriver CompanyInMemory", () => {
     expect(company.fantasy).toEqual("Cana caiana");
     expect(company.companyName).toEqual("Cana caiana LTDA");
     expect(company.cnpj).toEqual("01123456000151");
-    expect(company.owners.findIndex((owner) => owner.name === "José Severino")).toBeGreaterThan(-1);
+    expect(company.owners.find((owner) => owner.name === "José Severino")).toBeDefined();
   });
 
   test("Read all companys", () => {
     const companys = companyDrive.readAll();
 
-    expect(Array.isArray(companys)).toBeTruthy;
-    expect(companys.includes(canaCaiana)).toBeTruthy;
+    expect(companys.length).toEqual(1);
+    expect(companys.find((comp) => comp.fantasy === canaCaiana.fantasy)).toBeDefined();
   });
 
   test("Update a company", () => {
@@ -47,6 +47,6 @@ describe("Test the CRUD operations of DBDriver CompanyInMemory", () => {
   test("Delete a company", () => {
     companyDrive.delete("1");
 
-    expect(companyDrive.data.includes({ ...canaCaiana })).toBeFalsy;
+    expect(companyDrive.data.length).toEqual(0);
   });
 });

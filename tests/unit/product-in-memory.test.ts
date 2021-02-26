@@ -8,7 +8,7 @@ describe("Test the CRUD operations of DB driver ProductInMemory", () => {
   test("Create an product", () => {
     productDrive.create(tubaina);
 
-    expect(productDrive.data.includes({ ...tubaina })).toBeTruthy;
+    expect(productDrive.data[0].name).toEqual(tubaina.name);
   });
 
   test("Read a product", () => {
@@ -22,7 +22,8 @@ describe("Test the CRUD operations of DB driver ProductInMemory", () => {
   test("Read all products", () => {
     const products = productDrive.readAll();
 
-    expect(Array.isArray(products)).toBeTruthy;
+    expect(products.length).toEqual(1);
+    expect(products.find((prod) => prod.name === tubaina.name)).toBeDefined();
   });
 
   test("Update a product", () => {
@@ -36,6 +37,6 @@ describe("Test the CRUD operations of DB driver ProductInMemory", () => {
   test("Delete a product", () => {
     productDrive.delete("1");
 
-    expect(productDrive.data.includes({ ...tubaina })).toBeFalsy;
+    expect(productDrive.data.length).toEqual(0);
   });
 });

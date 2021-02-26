@@ -32,8 +32,8 @@ describe("Test the CRUD operations of DBDriver OrderInMemory", () => {
   test("Read all orders", () => {
     const orders = orderDrive.readAll();
 
-    expect(Array.isArray(orders)).toBeTruthy;
-    expect(orders.includes(order1)).toBeTruthy;
+    expect(orders.length).toEqual(1);
+    expect(orders.find((order) => order.client === order1.client)).toBeDefined();
   });
 
   test("Update an order", () => {
@@ -51,6 +51,6 @@ describe("Test the CRUD operations of DBDriver OrderInMemory", () => {
   test("Delete an order", () => {
     orderDrive.delete("1");
 
-    expect(orderDrive.data.includes({ ...order1 })).toBeFalsy;
+    expect(orderDrive.data.length).toEqual(0);
   });
 });
