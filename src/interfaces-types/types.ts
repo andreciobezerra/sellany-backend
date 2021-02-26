@@ -9,7 +9,4 @@ export type int = number & { __int__: void };
 
 export type Entity = Product | Company | Owner | Order | Client | Salesman;
 
-export type Data = Record<
-  string,
-  string | number | Array<string> | Entity | Array<Owner> | Array<Product>
->;
+export type Data = Record<string, string | number | Array<string> | Entity | Array<Entity>>;
