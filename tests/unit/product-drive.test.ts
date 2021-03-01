@@ -40,6 +40,6 @@ describe("Test the operation of DB driver ProductDrive", () => {
   test("Delete a product", () => {
     productDrive.delete("1");
 
-    expect(productDrive.readAll().includes({ ...tubaina })).toBeFalsy;
+    expect(productDrive.readAll().includes({ ...tubaina })).toBeFalsy();
   });
 });
