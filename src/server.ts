@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import router from "@src/routes/router";
 import sqliteDrive from "../database/sqlite3DB";
+import errorHandler from "./middlewares/errorHandling";
 
 class Server {
   private port: number;
@@ -15,6 +16,7 @@ class Server {
 
   private setupExpress(): void {
     this.app.use(express.json());
+    this.app.use(express.urlencoded());
     this.app.use(cors());
   }
 
@@ -25,6 +27,7 @@ class Server {
   public init(): void {
     this.setupExpress();
     this.setupRouter();
+    this.app.use(errorHandler);
     new sqliteDrive();
   }
 
