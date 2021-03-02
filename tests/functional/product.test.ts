@@ -27,7 +27,7 @@ describe("Product CRUD operations tests", () => {
   test("Get all products", async (): Promise<void> => {
     const { body, status } = await global.testRequest.get("/product/all-products");
     expect(status).toEqual(200);
-    expect(body.data.includes(product)).toBeTruthy;
+    expect(body.data.find((prod: any) => prod.name === product.name)).toBeDefined();
   });
 
   test("Update a product", async (): Promise<void> => {
@@ -38,9 +38,9 @@ describe("Product CRUD operations tests", () => {
 
     expect(status).toEqual(200);
     expect(body.message).toEqual("Product updated with success.");
-    expect(keys.includes("name")).toBeTruthy;
-    expect(keys.includes("companyID")).toBeTruthy;
-    expect(keys.includes("details")).toBeTruthy;
+    expect(keys.includes("name")).toBeTruthy();
+    expect(keys.includes("companyID")).toBeTruthy();
+    expect(keys.includes("details")).toBeTruthy();
     expect(productRes.body.data.price).toEqual(3.49);
   });
 
@@ -49,5 +49,56 @@ describe("Product CRUD operations tests", () => {
 
     expect(status).toEqual(200);
     expect(body.message).toEqual("Product deleted with success.");
+  });
+
+  test("Create a product with a invalid name", async (): Promise<void> => {
+    const invalidProduct = {
+      name: "ov",
+      companyID: "pb5815000",
+      price: 2.99,
+      details: "produto invalido",
+      percentual: 0.6,
+    };
+
+    const { body, status } = await global.testRequest
+      .post("/product/create-product")
+      .send(invalidProduct);
+
+    expect(status).toEqual(422);
+    expect(body).toEqual({ error: "The name must be at least 3 characters." });
+  });
+
+  test("Create a product with a invalid price", async (): Promise<void> => {
+    const invalidProduct = {
+      name: "ovo",
+      companyID: "pb5815000",
+      price: -2.99,
+      details: "produto invalido",
+      percentual: 0.6,
+    };
+
+    const { body, status } = await global.testRequest
+      .post("/product/create-product")
+      .send(invalidProduct);
+
+    expect(status).toEqual(422);
+    expect(body).toEqual({ error: "The price must be a positive value." });
+  });
+
+  test("Create a product with a invalid percentual", async (): Promise<void> => {
+    const invalidProduct = {
+      name: "ovo",
+      companyID: "pb5815000",
+      price: 2.99,
+      details: "produto invalido",
+      percentual: -0.6,
+    };
+
+    const { body, status } = await global.testRequest
+      .post("/product/create-product")
+      .send(invalidProduct);
+
+    expect(status).toEqual(422);
+    expect(body).toEqual({ error: "The percentual must be a positive value." });
   });
 });
