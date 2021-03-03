@@ -14,6 +14,7 @@ productRouter.post(
   validate,
   productService.create
 );
+
 productRouter.get("/all-products", productService.readAll);
 productRouter.get("/:id", productService.read);
 productRouter.patch("/:id", productService.update);
