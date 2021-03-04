@@ -9,7 +9,7 @@ class ProductSQLite implements IDBStrategy {
 
   create(product: Product): void {
     this.db
-      .prepare("INSERT INTO product ( nome, preco, companyID, descricao )  VALUES ( ?,?,?,?)")
+      .prepare("INSERT INTO product ( name, price, companyID, details )  VALUES ( ?,?,?,?)")
       .run(product.name, product.price, product.companyID, product.details);
   }
 
@@ -20,7 +20,7 @@ class ProductSQLite implements IDBStrategy {
   }
 
   readAll(): Array<Product> {
-    return this.db.prepare('SELECT id ,nome, preco, companyID, descricao FROM "product"').all();
+    return this.db.prepare('SELECT id ,name, price, companyID, details FROM "product"').all();
   }
 
   update(id: string, newData: Data): void {
