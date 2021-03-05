@@ -6,6 +6,10 @@ class sqliteDrive {
   getDB(): sqlite3.Database {
     return sqliteDrive.DB;
   }
+
+  close(): void {
+    this.getDB().close();
+  }
 }
 
 export default sqliteDrive;

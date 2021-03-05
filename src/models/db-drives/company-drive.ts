@@ -1,40 +1,40 @@
 import type IDBDrive from "@src/interfaces-types/db-drive-interface";
 import type IDBStrategy from "@src/interfaces-types/db-strategy-interface";
 import type { Data } from "@src/interfaces-types/types";
-import type Product from "@src/models/entities/product";
-import ProductInMemory from "./product-in-memory";
-import ProductSQLite from "./product-sqlite";
+import type Company from "@src/models/entities/company";
+import CompanyInMemory from "./company-in-memory";
+import CompanySQLite from "./company-sqlite";
 
-class ProductDrive implements IDBDrive {
+class CompanyDrive implements IDBDrive {
   readonly strategy: IDBStrategy;
 
   constructor(nodeEnv: string) {
     switch (nodeEnv) {
       case "test":
-        this.strategy = new ProductInMemory();
+        this.strategy = new CompanyInMemory();
         break;
       case "development":
-        this.strategy = new ProductSQLite();
+        this.strategy = new CompanySQLite();
         break;
       default:
-        this.strategy = new ProductInMemory();
+        this.strategy = new CompanyInMemory();
     }
   }
 
-  create(elem: Product): void {
+  create(elem: Company): void {
     this.strategy.create(elem);
   }
 
-  read(id: string): Product {
+  read(id: string): Company {
     const product = this.strategy.read(id);
 
-    return product as Product;
+    return product as Company;
   }
 
-  readAll(): Array<Product> {
+  readAll(): Array<Company> {
     const products = this.strategy.readAll();
 
-    return products as Array<Product>;
+    return products as Array<Company>;
   }
 
   update(id: string, newData: Data): void {
@@ -46,4 +46,4 @@ class ProductDrive implements IDBDrive {
   }
 }
 
-export default ProductDrive;
+export default CompanyDrive;

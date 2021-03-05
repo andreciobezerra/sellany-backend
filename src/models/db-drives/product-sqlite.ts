@@ -9,8 +9,10 @@ class ProductSQLite implements IDBStrategy {
 
   create(product: Product): void {
     this.db
-      .prepare("INSERT INTO product ( name, price, companyID, details )  VALUES ( ?,?,?,?)")
-      .run(product.name, product.price, product.companyID, product.details);
+      .prepare(
+        "INSERT INTO product ( name, price, companyID, details, percentual )  VALUES ( ?,?,?,?,?)"
+      )
+      .run(product.name, product.price, product.companyID, product.details, product.percentual);
   }
 
   read(id: string): Product {
@@ -20,19 +22,24 @@ class ProductSQLite implements IDBStrategy {
   }
 
   readAll(): Array<Product> {
-    return this.db.prepare('SELECT id ,name, price, companyID, details FROM "product"').all();
+    return this.db.prepare('SELECT * FROM "product"').all();
   }
 
   update(id: string, newData: Data): void {
-    throw new Error("Method not implemented.");
+    const columns = Object.keys(newData)
+      .map((key) => `${key} = '${newData[key]}'`)
+      .join(", ");
+
+    this.db.prepare(`UPDATE product SET ${columns} WHERE id=${id}`).run();
   }
 
   delete(id: string): void {
-    throw new Error("Method not implemented.");
+    this.db.prepare(`DELETE from product WHERE id=${id}`).run();
   }
 
-  close(): void {
-    this.db.close();
+  clear(): void {
+    this.db.prepare("DELETE from product").run();
+    this.db.prepare("DELETE from sqlite_sequence WHERE name='product'").run();
   }
 }
 

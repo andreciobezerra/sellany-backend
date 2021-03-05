@@ -11,10 +11,14 @@ describe("Test the operation of DB driver ProductDrive", () => {
     0.3
   );
 
-  afterAll(() => sqliteDrive.close());
+  afterAll(() => {
+    sqliteDrive.clear();
+  });
 
   test("Create a product", () => {
     sqliteDrive.create(fluminense);
+
+    expect(sqliteDrive.readAll().length).toEqual(1);
   });
 
   test("Read a product", () => {
@@ -26,7 +30,23 @@ describe("Test the operation of DB driver ProductDrive", () => {
     expect(product?.details).toEqual(fluminense.details);
   });
 
-  xtest("List all products", () => {
+  test("List all products", () => {
     const products = sqliteDrive.readAll();
+    expect(products.length).toEqual(1);
+    expect(products.find((prod) => prod.name === fluminense.name)).toBeDefined();
+  });
+
+  test("Update a product", () => {
+    sqliteDrive.update("1", { name: "cajuina", price: 4.5 });
+    const cajuina = sqliteDrive.read("1");
+
+    expect(cajuina.name).toEqual("cajuina");
+    expect(cajuina.price).toEqual(4.5);
+  });
+
+  test("Delete a product", () => {
+    sqliteDrive.delete("1");
+
+    expect(sqliteDrive.readAll().length).toEqual(0);
   });
 });
