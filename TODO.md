@@ -1,6 +1,0 @@
-- Validation -> add middlleware
-- Error Handling -> add middlleware
-- Refactoring the Product on Diagram
-- Other Product's methods besides CRUD tests
-- Fix the DB to english
-- Add Company and Order services
