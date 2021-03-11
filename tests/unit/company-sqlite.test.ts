@@ -1,6 +1,6 @@
-import CompanySQLite from "@src/models/db-drives/company-sqlite";
-import Company from "@src/models/entities/company";
-import Owner from "@src/models/entities/owner";
+import CompanySQLite from "src/data/company-sqlite";
+import Company from "src/service/company";
+import Owner from "src/service/owner";
 
 describe("Test the operation of DB driver CompanyDrive", () => {
   const sqliteDrive = new CompanySQLite();

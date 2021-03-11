@@ -1,7 +1,7 @@
-import type IDBDrive from "@src/interfaces-types/db-drive-interface";
-import type IDBStrategy from "@src/interfaces-types/db-strategy-interface";
-import type { Data } from "@src/interfaces-types/types";
-import type Company from "@src/models/entities/company";
+import type IDBDrive from "@src/data/db-drive-interface";
+import type IDBStrategy from "./db-strategy-interface";
+import type { Data } from "@src/service/types";
+import type Company from "@src/service/company";
 import CompanyInMemory from "./company-in-memory";
 import CompanySQLite from "./company-sqlite";
 

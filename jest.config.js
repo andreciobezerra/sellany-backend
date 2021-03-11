@@ -9,6 +9,6 @@ module.exports = {
   preset: "ts-jest",
   moduleNameMapper: {
     "@src/(.*)": "<rootDir>/src/$1",
-    "@tests/(.*)": "<rootDir>/tests/$1",
+    "@database/(.*)": "<rootDir>/database/$1",
   },
 };

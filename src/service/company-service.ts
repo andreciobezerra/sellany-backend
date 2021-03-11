@@ -1,6 +1,6 @@
-import ICrudMessages from "@src/interfaces-types/crud-messages-interface";
-import Crud from "@src/models/crud";
-import CompanyDriver from "@src/models/db-drives/company-drive";
+import ICrudMessages from "@src/service/crud-messages-interface";
+import Crud from "./crud";
+import CompanyDriver from "@src/data/company-drive";
 
 class CompanyService extends Crud {
   private static CrudMessages: ICrudMessages = {

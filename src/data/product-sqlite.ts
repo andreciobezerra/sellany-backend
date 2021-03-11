@@ -1,7 +1,7 @@
-import IDBStrategy from "@src/interfaces-types/db-strategy-interface";
-import type Product from "../entities/product";
-import type { Data } from "@src/interfaces-types/types";
-import sqliteDrive from "@src/../database/sqlite3DB";
+import IDBStrategy from "./db-strategy-interface";
+import type Product from "@src/service/product";
+import type { Data } from "@src/service/types";
+import sqliteDrive from "@database/sqlite3DB";
 
 class ProductSQLite implements IDBStrategy {
   private dbDrive = new sqliteDrive();

@@ -1,4 +1,4 @@
-import type { Data, Entity } from "./types";
+import type { Data, Entity } from "@src/service/types";
 
 interface IDBStrategy {
   create(elem: Entity): void;

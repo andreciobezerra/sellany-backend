@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-interface IService {
+interface IController {
   create(req: Request, res: Response): void;
   read(req: Request, res: Response): void;
   readAll(req: Request, res: Response): void;
@@ -8,4 +8,4 @@ interface IService {
   delete(req: Request, res: Response): void;
 }
 
-export default IService;
+export default IController;
