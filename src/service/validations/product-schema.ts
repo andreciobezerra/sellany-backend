@@ -1,25 +1,20 @@
-import { Schema } from "express-validator";
+import * as yup from "yup";
 
-const productSchema = {
-  name: {
-    isLength: { options: [{ min: 3 }], errorMessage: "The name must be at least 3 characters." },
-  },
+const productSchema = yup.object().shape({
+  name: yup
+    .string()
+    .min(3, "The name must be at least 3 characters.")
+    .required("The name is required."),
 
-  price: {
-    isFloat: { errorMessage: "Invalid price." },
-    custom: {
-      options: (value: number): boolean => value >= 0,
-      errorMessage: "The price must be a positive value.",
-    },
-  },
+  price: yup
+    .number()
+    .positive("The price must be a positive value.")
+    .required("The price is required."),
 
-  percentual: {
-    isFloat: { errorMessage: "Invalid percentual." },
-    custom: {
-      options: (value: number): boolean => value >= 0,
-      errorMessage: "The percentual must be a positive value.",
-    },
-  },
-};
+  percentual: yup
+    .number()
+    .positive("The percentual must be a positive value.")
+    .required("The percentual is required."),
+});
 
-export default productSchema as Schema;
+export default productSchema;

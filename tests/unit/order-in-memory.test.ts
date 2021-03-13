@@ -1,8 +1,8 @@
-import OrderInMemory from "@src/models/db-drives/order-in-memory";
-import Client from "@src/models/entities/client";
-import Company from "@src/models/entities/company";
-import Order from "@src/models/entities/order";
-import Salesman from "@src/models/entities/salesman";
+import OrderInMemory from "@src/data/order-in-memory";
+import Client from "@src/service/client";
+import Company from "@src/service/company";
+import Order from "@src/service/order";
+import Salesman from "@src/service/salesman";
 
 describe("Test the CRUD operations of DBDriver OrderInMemory", () => {
   const canaCaiana = new Company("Cana caiana LTDA", "Cana caiana", "01123456000151", {

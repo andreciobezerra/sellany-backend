@@ -1,5 +1,5 @@
-import ProductInMemory from "@src/models/db-drives/product-in-memory";
-import Product from "@src/models/entities/product";
+import ProductInMemory from "@src/data/product-in-memory";
+import Product from "@src/service/product";
 
 describe("Test the CRUD operations of DB driver ProductInMemory", () => {
   const productDrive = new ProductInMemory();

@@ -19,7 +19,7 @@ abstract class Crud implements IService {
       Crud.DBDrive.create(elem);
       res.status(200).json({ message: Crud.Messages.createMessage });
     } catch (error) {
-      console.error(error);
+      throw Error(error.message);
     }
   }
 

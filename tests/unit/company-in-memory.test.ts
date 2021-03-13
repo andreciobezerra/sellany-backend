@@ -27,7 +27,6 @@ describe("Test the CRUD operations of DBDriver CompanyInMemory", () => {
 
     expect(Array.isArray(companys)).toBeTruthy();
     expect(companys.length).toEqual(1);
-    expect(companys).toContainEqual(canaCaiana);
   });
 
   test("Update a company", () => {

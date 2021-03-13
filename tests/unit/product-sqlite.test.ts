@@ -1,5 +1,5 @@
-import ProductSQLite from "@src/models/db-drives/product-sqlite";
-import Product from "@src/models/entities/product";
+import ProductSQLite from "@src/data/product-sqlite";
+import Product from "@src/service/product";
 
 describe("Test the operation of DB driver ProductDrive", () => {
   const sqliteDrive = new ProductSQLite();
