@@ -1,6 +1,6 @@
-import IDBStrategy from "@src/interfaces-types/db-strategy-interface";
-import type { Data } from "@src/interfaces-types/types";
-import type Salesman from "../entities/salesman";
+import IDBStrategy from "./db-strategy-interface";
+import type { Data } from "@src/service/types";
+import type Salesman from "@src/service/salesman";
 
 class SalesmanInMemory implements IDBStrategy {
   readonly data: Array<Data> = [];

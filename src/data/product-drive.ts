@@ -1,9 +1,9 @@
-import type IDBDrive from "@src/interfaces-types/db-drive-interface";
-import type IDBStrategy from "@src/interfaces-types/db-strategy-interface";
-import type { Data } from "@src/interfaces-types/types";
-import type Product from "@src/models/entities/product";
 import ProductInMemory from "./product-in-memory";
 import ProductSQLite from "./product-sqlite";
+import type IDBDrive from "@src/data/db-drive-interface";
+import type IDBStrategy from "./db-strategy-interface";
+import type { Data } from "@src/service/types";
+import type Product from "@src/service/product";
 
 class ProductDrive implements IDBDrive {
   readonly strategy: IDBStrategy;

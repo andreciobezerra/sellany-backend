@@ -1,6 +1,6 @@
-import CompanyInMemory from "@src/models/db-drives/company-in-memory";
-import Company from "@src/models/entities/company";
-import Owner from "@src/models/entities/owner";
+import CompanyInMemory from "@src/data/company-in-memory";
+import Company from "@src/service/company";
+import Owner from "@src/service/owner";
 
 describe("Test the CRUD operations of DBDriver CompanyInMemory", () => {
   const canaCaiana = new Company("Cana caiana LTDA", "Cana caiana", "01123456000151", {
@@ -19,17 +19,14 @@ describe("Test the CRUD operations of DBDriver CompanyInMemory", () => {
   test("Read a company", () => {
     const company = companyDrive.read("1");
 
-    expect(company.fantasy).toEqual("Cana caiana");
-    expect(company.companyName).toEqual("Cana caiana LTDA");
-    expect(company.cnpj).toEqual("01123456000151");
-    expect(company.owners.find((owner) => owner.name === "José Severino")).toBeDefined();
+    expect(company).toMatchObject(canaCaiana);
   });
 
   test("Read all companys", () => {
     const companys = companyDrive.readAll();
 
+    expect(Array.isArray(companys)).toBeTruthy();
     expect(companys.length).toEqual(1);
-    expect(companys.find((comp) => comp.fantasy === canaCaiana.fantasy)).toBeDefined();
   });
 
   test("Update a company", () => {
@@ -40,13 +37,18 @@ describe("Test the CRUD operations of DBDriver CompanyInMemory", () => {
     const cana = companyDrive.read("1");
 
     expect(cana.fantasy).toEqual("Cana-caiana");
-    expect(cana.owners.findIndex((owner) => owner.name === "José Severino")).toEqual(-1);
-    expect(cana.owners.findIndex((owner) => owner.name === "Adauto Pedro")).toBeGreaterThan(-1);
+    expect(
+      cana.owners.findIndex((owner: { name: string }) => owner.name === "José Severino")
+    ).toEqual(-1);
+    expect(
+      cana.owners.findIndex((owner: { name: string }) => owner.name === "Adauto Pedro")
+    ).toBeGreaterThan(-1);
   });
 
   test("Delete a company", () => {
     companyDrive.delete("1");
 
     expect(companyDrive.data.length).toEqual(0);
+    expect(companyDrive.read("1")).toBeUndefined();
   });
 });

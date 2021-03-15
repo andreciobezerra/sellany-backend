@@ -17,12 +17,12 @@
     "baseUrl": ".",
     "paths": {
       "@src/*": ["./src/*"],
-      "@tests/*": ["./tests/*"]
+      "@tests/*": ["./tests/*"],
+      "@database/*": ["./database/*"]
     },
-    "rootDirs": ["./src", "./tests"],
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["./src/**/*.ts", "./tests/**/*.ts"],
+  "include": ["./src/**/*.ts", "./tests/**/*.ts", "./database/*.ts"],
   "exclude": ["./node_modules/*", "dist"]
 }

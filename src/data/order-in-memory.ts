@@ -1,6 +1,6 @@
-import IDBStrategy from "@src/interfaces-types/db-strategy-interface";
-import type { Data } from "@src/interfaces-types/types";
-import Order from "../entities/order";
+import IDBStrategy from "./db-strategy-interface";
+import type Order from "@src/service/order";
+import type { Data } from "@src/service/types";
 
 class OrderInMemory implements IDBStrategy {
   readonly data: Array<Data> = [];

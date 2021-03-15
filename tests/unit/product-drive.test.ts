@@ -1,5 +1,5 @@
-import ProductDrive from "@src/models/db-drives/product-drive";
-import Product from "@src/models/entities/product";
+import ProductDrive from "@src/data/product-drive";
+import Product from "@src/service/product";
 
 describe("Test the operation of DB driver ProductDrive", () => {
   const productDrive = new ProductDrive(process.env.NODE_ENV ?? "");

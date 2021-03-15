@@ -1,9 +1,8 @@
-import "./utils/module-alias";
 import express from "express";
 import cors from "cors";
-import router from "@src/routes/router";
-import sqliteDrive from "../database/sqlite3DB";
+import router from "./routes/router";
 import errorHandler from "./middlewares/errorHandling";
+import sqliteDrive from "@database/sqlite3DB";
 
 class Server {
   private port: number;
@@ -16,7 +15,7 @@ class Server {
 
   private setupExpress(): void {
     this.app.use(express.json());
-    this.app.use(express.urlencoded());
+    this.app.use(express.urlencoded({ extended: true }));
     this.app.use(cors());
   }
 

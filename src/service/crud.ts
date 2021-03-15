@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import IService from "@src/interfaces-types/service-interface";
-import ICrudMessages from "@src/interfaces-types/crud-messages-interface";
-import IDBDrive from "@src/interfaces-types/db-drive-interface";
-import { Entity } from "@src/interfaces-types/types";
+import IService from "@src/api/controllers/service-interface";
+import ICrudMessages from "@src/service/crud-messages-interface";
+import IDBDrive from "@src/data/db-drive-interface";
+import { Entity } from "@src/service/interfaces-types/types";
 
 abstract class Crud implements IService {
   private static Messages: ICrudMessages;
@@ -19,7 +19,7 @@ abstract class Crud implements IService {
       Crud.DBDrive.create(elem);
       res.status(200).json({ message: Crud.Messages.createMessage });
     } catch (error) {
-      console.error(error);
+      throw Error(error.message);
     }
   }
 

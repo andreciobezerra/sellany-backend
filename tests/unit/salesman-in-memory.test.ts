@@ -1,6 +1,6 @@
-import SalesmanInMemory from "@src/models/db-drives/salesman-in-memory";
-import Company from "@src/models/entities/company";
-import Salesman from "@src/models/entities/salesman";
+import SalesmanInMemory from "@src/data/salesman-in-memory";
+import Company from "@src/service/company";
+import Salesman from "@src/service/salesman";
 
 describe("Test the CRUD operations of DBDriver SalesmanInMemory", () => {
   const canaCaiana = new Company("Cana caiana LTDA", "Cana caiana", "01123456000151", {

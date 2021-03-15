@@ -1,4 +1,4 @@
-import Server from "@src/server";
+import Server from "@src/api/server";
 import supertest from "supertest";
 
 beforeAll(() => {

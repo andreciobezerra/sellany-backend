@@ -1,7 +1,7 @@
-import IDBStrategy from "@src/interfaces-types/db-strategy-interface";
-import type Company from "../entities/company";
-import type { Data } from "@src/interfaces-types/types";
-import sqliteDrive from "@src/../database/sqlite3DB";
+import IDBStrategy from "./db-strategy-interface";
+import sqliteDrive from "@database/sqlite3DB";
+import type Company from "@src/service/company";
+import type { Data } from "@src/service/types";
 
 class CompanySQLite implements IDBStrategy {
   private dbDrive = new sqliteDrive();
