@@ -1,25 +1,19 @@
-import ProductService from "@src/service/product-service";
+import ClientService from "@src/service/client-service";
 import { NextFunction, Request, Response } from "express";
 import IController from "./controller-interface";
 
-class ProductController implements IController {
-  private service: ProductService;
-
-  private static CrudMessages = {
-    createMessage: "Product created with success.",
-    updateMessage: "Product updated with success.",
-    deleteMessage: "Product deleted with success.",
-  };
+class ClientController implements IController {
+  private service: ClientService;
 
   constructor() {
-    this.service = new ProductService();
+    this.service = new ClientService();
   }
 
   async create(req: Request, res: Response, next: NextFunction): Promise<void> {
-    const product = req.body;
+    const client = req.body;
 
     try {
-      const message = await this.service.create(product);
+      const message = await this.service.create(client);
       res.status(200).json({ message });
     } catch (error) {
       next({ statusCode: 422, message: error.message });
@@ -69,4 +63,4 @@ class ProductController implements IController {
   }
 }
 
-export default ProductController;
+export default ClientController;

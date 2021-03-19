@@ -17,11 +17,11 @@ class ClientDrive implements IDBDrive {
     }
   }
 
-  create(elem: Entity): void {
+  create(elem: Client): void {
     this.strategy.create(elem);
   }
 
-  read(id: string): Entity {
+  read(id: string): Client {
     const client = this.strategy.read(id);
 
     return client as Client;
