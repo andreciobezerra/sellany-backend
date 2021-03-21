@@ -7,7 +7,7 @@ const controller = new ProductController();
 
 productRouter.post(
   "/create-product",
-  body(["name", "companyID", "details", "percentual"]).trim().escape(),
+  body(["name", "companyID", "details", "percentual", "price"]).trim().escape(),
   controller.create.bind(controller)
 );
 

@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import morgan from "morgan";
 import router from "./routes/router";
 import errorHandler from "./middlewares/errorHandling";
 import sqliteDrive from "@database/sqlite3DB";
@@ -17,6 +18,7 @@ class Server {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(cors());
+    this.app.use(morgan("dev"));
   }
 
   private setupRouter(): void {
