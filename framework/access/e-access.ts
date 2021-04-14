@@ -7,11 +7,8 @@ import IAccess from "./iaccess";
 type user = Client | Admin;
 
 export default class EAccess extends Acccess implements IAccess {
-  private db: idb;
-
   constructor(db: idb) {
-    super();
-    this.db = db;
+    super(db);
   }
 
   signUp(user: user): void {

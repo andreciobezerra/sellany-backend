@@ -11,6 +11,6 @@ export type signInData = {
 
 export default interface IAccess {
   signIn(data: signInData): string;
-  signOut(): void;
+  signOut(token: string): void;
   signUp(data: user): void;
 }

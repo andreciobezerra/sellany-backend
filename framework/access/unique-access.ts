@@ -4,11 +4,8 @@ import Acccess from "./acess";
 import IAccess from "./iaccess";
 
 export default class EAccess extends Acccess implements IAccess {
-  private db: IDB;
-
   constructor(db: IDB) {
-    super();
-    this.db = db;
+    super(db);
   }
 
   signUp(user: Operator): void {
