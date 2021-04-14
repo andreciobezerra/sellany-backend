@@ -23,6 +23,14 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["./src/**/*.ts", "./tests/**/*.ts", "./database/*.ts"],
+  "include": [
+    "./src/**/*.ts",
+    "./tests/**/*.ts",
+    "./database/*.ts",
+    "framework/shared/client.ts",
+    "framework/shared/person.ts",
+    "framework/shared/owner.ts",
+    "framework/shared/idb.ts"
+  ],
   "exclude": ["./node_modules/*", "dist"]
 }

@@ -1,4 +1,4 @@
-import type Client from "./client";
+import type Client from "../../framework/shared/client";
 import type Company from "./company";
 import type Order from "./order";
 import type Owner from "./owner";

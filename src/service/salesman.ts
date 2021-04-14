@@ -1,6 +1,6 @@
+import Person from "../../framework/shared/person";
 import type Company from "./company";
 import type Order from "./order";
-import Person from "./person";
 
 class Salesman extends Person {
   readonly sells: Array<Order> = [];

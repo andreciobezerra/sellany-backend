@@ -8,6 +8,7 @@ class CompanyInMemory implements IDBStrategy {
   create(elem: Company): void {
     this.data.push({ id: `${this.data.length + 1}`, ...elem });
   }
+
   read(id: string): Company {
     const company = this.data.find((company) => company.id === id);
 

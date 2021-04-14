@@ -1,4 +1,4 @@
-import Person from "./person";
+import Person from "../../framework/shared/person";
 import Company from "./company";
 
 class Owner extends Person {

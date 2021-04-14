@@ -1,6 +1,7 @@
 import sqlite3 from "better-sqlite3";
+import IDB from "../framework/contracts/idb";
 
-class sqliteDrive {
+class sqliteDrive implements IDB {
   private static DB = sqlite3("./database/sellany.sqlite3");
 
   getDB(): sqlite3.Database {

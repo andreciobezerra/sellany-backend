@@ -1,6 +1,6 @@
 import ClientDriver from "@src/data/client-drive";
+import Client from "../../framework/shared/client";
 import clientSchema from "./validations/client-schema";
-import Client from "./client";
 
 class ClientService {
   private static DBDriver: ClientDriver = new ClientDriver(process.env.NODE_ENV ?? "");

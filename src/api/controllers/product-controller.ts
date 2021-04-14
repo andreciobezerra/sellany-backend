@@ -5,12 +5,6 @@ import IController from "./controller-interface";
 class ProductController implements IController {
   private service: ProductService;
 
-  private static CrudMessages = {
-    createMessage: "Product created with success.",
-    updateMessage: "Product updated with success.",
-    deleteMessage: "Product deleted with success.",
-  };
-
   constructor() {
     this.service = new ProductService();
   }
